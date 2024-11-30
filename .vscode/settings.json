@@ -1,0 +1,26 @@
+{
+    "idf.adapterTargetName": "esp32s3",
+    "files.associations": {
+        "freertos.h": "c",
+        "sdkconfig.h": "c",
+        "esp_system.h": "c",
+        "esp_timer.h": "c",
+        "gpio.h": "c",
+        "packet_handler.h": "c",
+        "assert.h": "c",
+        "*.inc": "c",
+        "semphr.h": "c",
+        "esp_rom_sys.h": "c",
+        "*.tcc": "cpp",
+        "format": "cpp",
+        "memory_utils.h": "c",
+        "cstdint": "c",
+        "xmemory": "c"
+    },
+    "idf.portWin": "COM6",
+    "idf.openOcdConfigs": [
+        "interface/ftdi/esp32_devkitj_v1.cfg",
+        "target/esp32s3.cfg"
+    ],
+    "idf.flashType": "UART"
+}
