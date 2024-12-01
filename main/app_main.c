@@ -3,6 +3,7 @@
 #include <string.h>
 #include <inttypes.h>
 #include "esp_log.h"
+#include <stdlib.h>  // For file operations
 
 // Define EEPROM_SIZE and the array to store the EEPROM values
 #define EEPROM_SIZE 1024  // Example size, modify as needed
@@ -19,17 +20,6 @@ typedef struct {
     } value;
     uint8_t length;  // Length of the data (only for strings)
 } eeprom_entry_t;
-
-// Function to print EEPROM values for debugging
-void print_eeprom_values() {
-    ESP_LOGI("TAG", "Printing EEPROM values:");
-
-    for (uint32_t addr = 0x1000; addr <= 0x1020; addr++) {
-        if (eeprom_array[addr] != 0) {  // Check if the value is non-zero
-            ESP_LOGI("TAG", "Address 0x%08" PRIx32 ": 0x%02X", addr, eeprom_array[addr]);
-        }
-    }
-}
 
 // Function to print all EEPROM values byte by byte
 void print_all_eeprom_values() {
@@ -122,9 +112,6 @@ void parse_and_store_csv_data(char *csv_line) {
         write_string_to_eeprom(entry.address, value_str, entry.length);
     } else if (strcmp(type, "HEX") == 0) {
         uint32_t value = strtoul(value_str, NULL, 16);
-        if (endianness) {
-            value = swap_endianness(value);
-        }
         write_hex_to_eeprom(entry.address, value, entry.length, endianness);
     } else if (strcmp(type, "CS") == 0) {
         uint8_t checksum = calculate_checksum(entry.address, entry.length);
@@ -135,21 +122,31 @@ void parse_and_store_csv_data(char *csv_line) {
     }
 }
 
-// Function to simulate reading CSV lines (this would typically come from a file or another source)
-void simulate_csv_input() {
-    // Simulate some CSV input lines
-    char csv_data[][256] = {
-        "reg1,1000,FLOAT,1.000,4,0",
-        "reg2,1004,INT,42,4,0",
-        "reg3,1008,STRING,Hello,6,0",
-        "reg4,100E,HEX,0x11223344,4,1",
-        "CS,1012,CS,x,4,0",  // Updated type to "CS"
-        "reg5,1013,HEX,0xFFAABBCC,4,0",
-        "CS1,1017,CS,x,4,0"
-    };
+// Embedded CSV data
+const char *embedded_csv_data =
+    "reg1,0x1000,FLOAT,3.14,0,0\n"
+    "reg2,0x1004,INT,42,0,0\n"
+    "reg3,0x1008,STRING,Hello,5,0\n"
+    "reg4,0x100E,HEX,0xDEADBEEF,4,1\n"
+    "reg5,0x1012,CS,x,4,0\n"
+    "reg6,0x1013,HEX,0xAABBCCDD,4,0\n"
+    "reg7,0x1017,CS,x,4,0\n";
 
-    for (int i = 0; i < sizeof(csv_data) / sizeof(csv_data[0]); i++) {
-        parse_and_store_csv_data(csv_data[i]);
+// Function to read CSV data from embedded string
+void read_csv_from_string(const char *csv_data) {
+    char line[256];
+    const char *ptr = csv_data;
+    while (*ptr) {
+        // Read a line from the CSV data
+        char *line_ptr = line;
+        while (*ptr && *ptr != '\n') {
+            *line_ptr++ = *ptr++;
+        }
+        *line_ptr = '\0';
+        if (*ptr == '\n') {
+            ptr++;
+        }
+        parse_and_store_csv_data(line);
     }
 }
 
@@ -157,11 +154,8 @@ void simulate_csv_input() {
 void app_main() {
     ESP_LOGI("TAG", "Started app_main");
 
-    // Simulate CSV input and store data in EEPROM array
-    simulate_csv_input();
-
-    // Print out the stored values in EEPROM
-    print_eeprom_values();
+    // Read CSV input from the embedded string and store data in EEPROM array
+    read_csv_from_string(embedded_csv_data);
 
     // Print all EEPROM values byte by byte
     print_all_eeprom_values();

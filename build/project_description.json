@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "nvs_table",
-    "project_version":    "0.0.1-1+nvs_table.dbg",
+    "project_version":    "0.0.2-1+nvs_table.dbg",
     "project_path":       "C:/Users/drzorge/EspressifIDE/workspace/nvs_table",
     "idf_path":           "C:/Espressif/frameworks/esp-idf-stable",
     "build_dir":          "C:/Users/drzorge/EspressifIDE/workspace/nvs_table/build",
