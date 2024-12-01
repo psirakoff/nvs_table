@@ -15,7 +15,8 @@
         "format": "cpp",
         "memory_utils.h": "c",
         "cstdint": "c",
-        "xmemory": "c"
+        "xmemory": "c",
+        "stdbool.h": "c"
     },
     "idf.portWin": "COM6",
     "idf.openOcdConfigs": [
