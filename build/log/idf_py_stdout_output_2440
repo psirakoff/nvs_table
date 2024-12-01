@@ -1,0 +1,91 @@
+�����ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x178c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xcb8
+load:0x403cb700,len:0x2db0
+entry 0x403c8914
+[0;32mI (27) boot: ESP-IDF v5.3-rc1 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Dec  1 2024 09:23:47[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (54) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c030020 size=0b138h ( 45368) map[0m
+[0;32mI (108) esp_image: segment 1: paddr=0001b160 vaddr=3fc92200 size=02a34h ( 10804) load[0m
+[0;32mI (110) esp_image: segment 2: paddr=0001db9c vaddr=40374000 size=0247ch (  9340) load[0m
+[0;32mI (118) esp_image: segment 3: paddr=00020020 vaddr=42000020 size=21180h (135552) map[0m
+[0;32mI (149) esp_image: segment 4: paddr=000411a8 vaddr=4037647c size=0bd4ch ( 48460) load[0m
+[0;32mI (166) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (166) boot: Disabling RNG early entropy source...[0m
+[0;32mI (178) cpu_start: Multicore app[0m
+[0;32mI (187) cpu_start: Pro cpu start user code[0m
+[0;32mI (187) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (187) app_init: Application information:[0m
+[0;32mI (190) app_init: Project name:     nvs_table[0m
+[0;32mI (195) app_init: App version:      0.0.1-1+nvs_table.dbg[0m
+[0;32mI (201) app_init: Compile time:     Dec  1 2024 09:23:33[0m
+[0;32mI (207) app_init: ELF file SHA256:  f3c4de416...[0m
+[0;32mI (212) app_init: ESP-IDF:          v5.3-rc1[0m
+[0;32mI (217) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (222) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (227) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (232) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (239) heap_init: At 3FC958E8 len 00053E28 (335 KiB): RAM[0m
+[0;32mI (245) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (251) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (257) heap_init: At 600FE100 len 00001EE8 (7 KiB): RTCRAM[0m
+[0;32mI (265) spi_flash: detected chip: gd[0m
+[0;32mI (268) spi_flash: flash io: dio[0m
+[0;33mW (272) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (285) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (292) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (299) main_task: Started on CPU0[0m
+[0;32mI (319) main_task: Calling app_main()[0m
+[0;32mI (319) TAG: Started app_main[0m
+[0;32mI (319) TAG: Parsed line - Register: reg1, Address: 0x00001000, Type: FLOAT, Value: 1.000, Length: 4, Endianness: 0[0m
+[0;32mI (329) TAG: Writing float value 0x3f800000 to address 0x00001000[0m
+[0;32mI (339) TAG: Parsed line - Register: reg2, Address: 0x00001004, Type: INT, Value: 42, Length: 4, Endianness: 0[0m
+[0;32mI (349) TAG: Writing int value 0x0000002a to address 0x00001004[0m
+[0;32mI (349) TAG: Parsed line - Register: reg3, Address: 0x00001008, Type: STRING, Value: Hello, Length: 5, Endianness: 0[0m
+[0;32mI (359) TAG: Writing string 'Hello' to address 0x00001008[0m
+[0;32mI (369) TAG: Parsed line - Register: reg4, Address: 0x0000100d, Type: HEX, Value: 0x11223344, Length: 4, Endianness: 1[0m
+[0;32mI (379) TAG: Writing hex value 0x11223344 to address 0x0000100d[0m
+[0;32mI (389) TAG: Printing EEPROM values:[0m
+[0;32mI (389) TAG: Address 0x00001002: 0x80[0m
+[0;32mI (399) TAG: Address 0x00001003: 0x3F[0m
+[0;32mI (399) TAG: Address 0x00001004: 0x2A[0m
+[0;32mI (399) TAG: Address 0x00001008: 0x48[0m
+[0;32mI (409) TAG: Address 0x00001009: 0x65[0m
+[0;32mI (409) TAG: Address 0x0000100a: 0x6C[0m
+[0;32mI (419) TAG: Address 0x0000100b: 0x6C[0m
+[0;32mI (419) TAG: Address 0x0000100c: 0x6F[0m
+[0;32mI (429) TAG: Address 0x0000100d: 0x11[0m
+[0;32mI (429) TAG: Printing all EEPROM values byte by byte:[0m
+[0;32mI (439) TAG: Address 0x00001000: 0x00[0m
+[0;32mI (439) TAG: Address 0x00001001: 0x00[0m
+[0;32mI (449) TAG: Address 0x00001002: 0x80[0m
+[0;32mI (449) TAG: Address 0x00001003: 0x3F[0m
+[0;32mI (449) TAG: Address 0x00001004: 0x2A[0m
+[0;32mI (459) TAG: Address 0x00001005: 0x00[0m
+[0;32mI (459) TAG: Address 0x00001006: 0x00[0m
+[0;32mI (469) TAG: Address 0x00001007: 0x00[0m
+[0;32mI (469) TAG: Address 0x00001008: 0x48[0m
+[0;32mI (479) TAG: Address 0x00001009: 0x65[0m
+[0;32mI (479) TAG: Address 0x0000100a: 0x6C[0m
+[0;32mI (479) TAG: Address 0x0000100b: 0x6C[0m
+[0;32mI (489) TAG: Address 0x0000100c: 0x6F[0m
+[0;32mI (489) TAG: Address 0x0000100d: 0x11[0m
+[0;32mI (499) TAG: Finished app_main[0m
+[0;32mI (499) main_task: Returned from app_main()[0m
